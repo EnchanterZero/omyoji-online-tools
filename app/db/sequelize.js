@@ -1,15 +1,14 @@
-
 import Sequelize from 'sequelize';
 import co from 'co';
 import Promise from 'bluebird';
 
 import { db } from '../config';
-//import { logger, sequelizeLogger } from 'modules/logger';
+import { logger, sequelizeLogger } from '../logger';
 console.log(db.database, db.username, db.password);
 const sequelize = new Sequelize(db.database, db.username, db.password, {
   host: db.host,
   dialect: db.dialect,
-  logging: console.log,
+  logging: sequelizeLogger.debug,
 
   pool: {
     max: 5,
@@ -36,8 +35,7 @@ function ensureDBConnection() {
         if (e instanceof Sequelize.ValidationError) {
           throw e;
         }
-        console.log(`sequelize.authenticate failed: ${e.message}`);
-        //logger.debug(`sequelize.authenticate failed: ${e.message}`);
+        logger.debug(`sequelize.authenticate failed: ${e.message}`);
         yield Promise.delay(1000);
       }
     }

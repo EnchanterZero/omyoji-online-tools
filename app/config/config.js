@@ -2,7 +2,7 @@
  * Created by intern07 on 16/11/30.
  */
 import nconf from 'nconf';
-
+import path from 'path';
 nconf.argv();
 nconf.env();
 nconf.defaults({
@@ -16,6 +16,9 @@ nconf.defaults({
   MYSQL_DB_USER:'root',
   MYSQL_DB_PASSWORD: null,
   MYSQL_DB_NAME: 'onmyoji',
+  
+  //log
+  LOG_DIR:path.resolve(__dirname,'..','log'),
 });
 
 export default {

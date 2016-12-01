@@ -5,15 +5,25 @@ import sequelize from '../sequelize';
 //import co from 'co';
 
 export const Chapter = require('./chapter').create(sequelize, Sequelize);
-//export const DefaultSettings = require('./defaultsettings').create(sequelize, Sequelize);
-//export const UserSettings = require('./usersettings').create(sequelize, Sequelize);
-//export const UploadStatus = require('./uploadstatus').create(sequelize, Sequelize);
+export const Section = require('./section').create(sequelize, Sequelize);
+export const Monster = require('./monster').create(sequelize, Sequelize);
+export const Round = require('./round').create(sequelize, Sequelize);
+export const RoundMonster = require('./round_monster').create(sequelize, Sequelize);
 
 const models = sequelize.models;
 
-Chapter.associate(models);
+Chapter.hasMany(Section);
+Section.hasMany(Round);
+Round.belongsToMany(Monster, { through: RoundMonster });
+Monster.belongsToMany(Round, { through: RoundMonster });
 //DefaultSettings.associate(models);
 //UserSettings.associate(models);
 //UploadStatus.associate(models);
-Chapter.sync()
+Chapter.sync();
+Section.sync();
+Monster.sync();
+Round.sync();
+RoundMonster.sync();
+
+// HasOne inserts the association key in target model whereas BelongsTo inserts the association key in the source model.
 export default models;
