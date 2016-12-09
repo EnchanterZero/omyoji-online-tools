@@ -7,6 +7,4 @@ export {
   db,
 }
 
-export default {
-  ...config,
-};
+export default config;
