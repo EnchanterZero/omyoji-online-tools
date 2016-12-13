@@ -30,14 +30,6 @@ export function create(sequelize, DataTypes) {
     charset: 'utf8',
     collate: 'utf8_general_ci',
     indexes: [
-      {
-        fields: ['name'],
-        unique: true,
-      },
-      {
-        fields: ['title'],
-        unique: true,
-      },
     ],
     classMethods: {
       associate: function (models) {

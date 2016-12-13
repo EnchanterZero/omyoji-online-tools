@@ -2,7 +2,7 @@
  * Created by intern07 on 16/12/1.
  */
 export function create(sequelize, DataTypes) {
-  const Section = sequelize.define('Section', {
+  const Round = sequelize.define('Round', {
     id: {
       type: DataTypes.UUID,
       validate: {
@@ -35,5 +35,5 @@ export function create(sequelize, DataTypes) {
       }
     }
   });
-  return Section;
+  return Round;
 };
