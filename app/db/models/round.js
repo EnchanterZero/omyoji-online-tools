@@ -24,7 +24,7 @@ export function create(sequelize, DataTypes) {
       defaultValue: '',
       allowNull: false,
       unique: true,
-      comment: "eg. 第一只天邪鬼黄",
+      comment: "eg. 这回合很难,要注意XX的技能会沉默,先秒童男",
     },
   }, {
     charset: 'utf8',
